@@ -24,7 +24,7 @@ function draw() {
   calcWave();
   renderWave();
   if (mouseIsPressed) {
-    amplitude += random(-100.0, 100.0);
+    amplitude += random(-10.0, 10.0);
     if (amplitude > 400){
       amplitude = -375
     }
