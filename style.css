@@ -1,9 +1,16 @@
 body{
   background-color: #200c45;
   margin: 0;
+  height: 100%;
+  padding: 0;
 }
 
+.p5Canvas{
+  display: block;
+}
 .footer{
   color: #e7dd82;
-  font-size: .5rem;
-}
+  font-size: 10px;
+  padding: 5px;
+  position: fixed;
+  bottom: 0;}
