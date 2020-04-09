@@ -10,6 +10,7 @@ let period = 1500.0;  // How many pixels before the wave repeats
 let dx;  // Value for incrementing X, a function of period and xspacing
 let yvalues = [];  // Using an array to store height values for the wave
 let x = theta;
+let inc = 1
 
 function setup() {
 
@@ -19,7 +20,6 @@ function setup() {
   amplitude = height / 5;
   w = width + xspacing * 2;
   var canvas = createCanvas(width, height);
-  stroke('rgba(221, 180, 101, 0.8)');
   strokeWeight(10);
 
 
@@ -31,23 +31,21 @@ function draw() {
   calcWave();
   renderWave();
   if (mouseIsPressed) {
-    amplitude += random(-1, 1) * 10;
-    if (amplitude > height / 2.5){
-      amplitude = -windowHeight /2;
+    amplitude += inc
+    theta += random(.01, .02);
+    if (Math.abs(amplitude) > height / 2.5){
+      inc = -Math.sign(inc) * random(1,10);
     }
     else if (amplitude < -windowHeight) {
       amplitude = windowHeight;
-
     }
   }
   else{
-    theta += .08;
+    theta -= random(.02, .03);
   }
 }
 
 function calcWave() {
-  theta -= 0.04;
-
   let x = theta
 
   for (let i = 0; i < yvalues.length; i++) {
@@ -58,7 +56,8 @@ function calcWave() {
 
 function renderWave() {
   background('#200c45');
-  fill('#3476e4');
+  fill('rgba(218, 70, 212, 0.37)');
+  stroke('rgba(75, 86, 237, 0.2)');
 
   for (let x = 1; x < yvalues.length; x++) {
     //ellipse(x*xspacing, height/2+yvalues[x], 16, 16);
